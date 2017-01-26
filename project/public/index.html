@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="chaordic">
 <head>
 	<title>Encurtador de Links - Chaordic</title>
+
+	<script type="text/javascript" src="js/lib/angular.min.js"></script>
+	<script type="text/javascript" src="js/controllers/links-controller.js"></script>
 </head>
-<body>
+<body ng-controller="LinksController">
+
+	<p>{{link}}</p>
 
 	<main>
 		<h1>Encurte seus links.</h1>
