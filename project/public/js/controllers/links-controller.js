@@ -19,6 +19,21 @@
             $scope.links = links;
         };
 
+
+        $scope.criarLink = function() {
+
+        	// Novo Link para teste de cadastro.
+            var novoLink = {
+                id : "12345",
+                hits : 0,
+                url : $scope.url,
+                shortUrl : "teste.com"
+            };
+
+            links.push(novoLink);
+            $scope.listarLinks();
+        };
+
 	});
 
 
