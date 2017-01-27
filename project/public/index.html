@@ -24,17 +24,11 @@
 	</main>
 
 	<section ng-init="listarLinks()">
-		<h2>Meus links</h2>
-		<div ng-repeat="link in links">
+		<h2>Top 5</h2>
+		<div ng-repeat="link in links | orderBy: '-hits' | limitTo: 5">
 			<p>{{link.shortUrl}}</p>
 			<p>{{link.hits}}</p>
 		</div>
-	</section>
-
-	<section>
-		<h2>Top 5</h2>
-		<p>htttp:chr.dc/xyzxyz</p>
-		<p>7.919</p>
 	</section>
 
 	<section>

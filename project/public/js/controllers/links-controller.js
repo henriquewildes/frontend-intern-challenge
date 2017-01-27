@@ -16,9 +16,11 @@
 	angular.module('chaordic', ['firebase'])
 	.controller('LinksController', function($scope, $firebaseArray) {
 
+		// Variaveis de referência ao Database do Firebase
 		var chaordicDatabase = firebase.database();
 		var linksRef = chaordicDatabase.ref('links');
 		var shortsRef = chaordicDatabase.ref('shorts');
+
 
 		// Função que lista os Links registrados no servidor Firebase.
 		$scope.listarLinks = function() {
@@ -35,45 +37,29 @@
 
         	// O timestamp servirá como ID para cada novo Link.
         	var timestamp = new Date().getTime();
-            // var novoLink = {
-            //     id : timestamp.toString(),
-            //     hits : 0,
-            //     url : $scope.url,
-            //     shortUrl : idToShortLink(timestamp)
-            // };
-
-            var links = [{"id": "23094", "hits": 1003, "url": "http://globo.com", "shortUrl": "9dtr4"}, 
-				        {"id": "76291", "hits": 1922, "url": "http://google.com", "shortUrl": "aUx71"}, 
-				        {"id": "66761", "hits": 765, "url": "http://terra.com.br", "shortUrl": "u9jh3"}, 
-				        {"id": "70001", "hits": 1519, "url": "http://facebook.com", "shortUrl": "qy61p"}, 
-				        {"id": "21220", "hits": 311, "url": "http://diariocatarinense.com.br", "shortUrl": "87itr"}, 
-				        {"id": "10743", "hits": 722, "url": "http://uol.com.br", "shortUrl": "y81xc"}, 
-				        {"id": "19122", "hits": 1320, "url": "http://chaordic.com.br", "shortUrl": "qy5k9"}, 
-				        {"id": "55324", "hits": 997, "url": "http://youtube.com", "shortUrl": "1w5tg"}, 
-				        {"id": "70931", "hits": 487, "url": "http://twitter.com", "shortUrl": "7tmv1"}, 
-				        {"id": "87112", "hits": 130, "url": "http://bing.com", "shortUrl": "9opw2"}];
-
-        	for (var i = 0; i < 10; i++) {
-        		novoLink = links[i];
+            var novoLink = {
+                id : timestamp.toString(),
+                hits : 0,
+                url : $scope.url,
+                shortUrl : idToShortLink(timestamp)
+            };
         	
-	            // Nota: O Firebase adota um modelo não-relacional para o banco de dados,
-	            // logo, torna-se necessário criar uma relação entre dois grupos no Firebase.
+            // Nota: O Firebase adota um modelo não-relacional para o banco de dados,
+            // logo, torna-se necessário criar uma relação entre dois grupos no Firebase.
 
-	            // Registrando novo link no Grupo Links do Firebase
-	            linksRef.child(novoLink.id).set(novoLink)
-	            .then(function() {
-	            	console.log("Registrado com sucesso.");
-	            	// Registrando bijeção shortUrl p/ Link no Firebase
-	            	
-	            })
-	            .catch(function(error) {
-	            	console.log("Registro não sucedido.");
-	            	console.log(error);
-	            });
+            // Registrando novo link no Grupo Links do Firebase
+            linksRef.child(novoLink.id).set(novoLink)
+            .then(function() {
+            	console.log("Registrado com sucesso.");
+            	// Registrando bijeção shortUrl p/ Link no Firebase
+            	
+            })
+            .catch(function(error) {
+            	console.log("Registro não sucedido.");
+            	console.log(error);
+            });
 
-	            shortsRef.child(novoLink.shortUrl).set({id : novoLink.id, url : novoLink.url});
-
-	        }
+            shortsRef.child(novoLink.shortUrl).set({id : novoLink.id, url : novoLink.url});
         };
 
 
@@ -119,6 +105,5 @@
 		    return id;
 		}
 	});
-
 
 }());
