@@ -16,14 +16,36 @@ var chaordicDatabase = firebase.database();
 var linksRef = chaordicDatabase.ref('links');
 var shortsRef = chaordicDatabase.ref('shorts');
 
+
+api.linkar = function(req, res) {
+
+	res.json({
+		id: 2,
+		nome: 'wildes'
+	});	
+}
+
 api.buscarLink = function(req, res) {
 
+	var shortUrl = req.params.shortUrl;
+
+	
 	// URL compactada estática
-	shortsRef.child('1w5tg').once('value').then(function(snap) {
-		console.log(snap.val().url);
-		console.log("Redirecionar");
+	shortsRef.child(shortUrl).once('value').then(function(snap) {
+		res.json(snap.val());
 	});
 
+	// res.end("Fala tu");
+
 };
+
+// api.listaPorGrupo = function(req, res) {
+//     var grupoId = parseInt(req.params.grupoId);
+//     db.find({grupo: grupoId}, function(err, doc) {
+//         if (err) return console.log(err);
+//         res.json(doc);
+//     });
+
+// };
 
 module.exports = api;

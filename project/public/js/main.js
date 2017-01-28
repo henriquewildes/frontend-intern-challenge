@@ -14,7 +14,6 @@ angular.module('chaordic', ['firebase', 'ngRoute'])
 		controller: 'UrlController'
 	});
 
-
 	// RESTA TRATAR ERRO 
 	$routeProvider.otherwise({redirectTo: '/'});
 
