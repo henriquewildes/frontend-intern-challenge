@@ -4,9 +4,9 @@
 	<h1>Encurte seus links.</h1>
 	<p>Links são longos. Encurte os links que você deseja compartilhar, e acompanhe enquanto viajam através da internet.</p>
 
-	<form ng-submit="criarLink()">
-		<input type="text" name="url" ng-model="url" placeholder="Cole sua URL aqui" required>	
-		<button type="submit">Encurtar</button>
+	<form ng-submit="acionarBotao()">
+		<input type="text" class="link" name="url" ng-model="url" placeholder="Cole sua URL aqui" required>	
+		<button type="submit">{{acao}}</button>
 	</form>
 </main>
 

@@ -17,6 +17,8 @@ angular.module('chaordic').controller('LinksController', function($scope, $fireb
 	var linksRef = chaordicDatabase.ref('links');
 	var shortsRef = chaordicDatabase.ref('shorts');
 
+	$scope.acao = "Encurtar";
+
 
 	// Função que lista os Links registrados no servidor Firebase.
 	$scope.listarLinks = function() {
@@ -28,15 +30,32 @@ angular.module('chaordic').controller('LinksController', function($scope, $fireb
     };
 
 
+    $scope.acionarBotao = function() {
+
+    	if ($scope.acao == "Encurtar") 
+    		criarLink();
+    	else 
+    		copiarLink();
+    }
+
+
     // Função que gera um novo Link e envia para o servidor Firebase.
-    $scope.criarLink = function() {
+    var criarLink = function() {
+
+    	var url = $scope.url;
+
+    	// Checar se o link possui a inicial 'https://'
+    	var https = 'https://';
+    	var inicioUrl = url.slice(0,8);
+    	if (inicioUrl != https)
+    		url = https + url;
 
     	// O timestamp servirá como ID para cada novo Link.
     	var timestamp = new Date().getTime();
         var novoLink = {
             id : timestamp.toString(),
             hits : 0,
-            url : $scope.url,
+            url : url,
             shortUrl : idToShortLink(timestamp)
         };
     	
@@ -47,16 +66,38 @@ angular.module('chaordic').controller('LinksController', function($scope, $fireb
         linksRef.child(novoLink.id).set(novoLink)
         .then(function() {
         	console.log("Registrado com sucesso.");
-        	// Registrando bijeção shortUrl p/ Link no Firebase
-        	
         })
         .catch(function(error) {
         	console.log("Registro não sucedido.");
         	console.log(error);
         });
 
+        $scope.acao = "Copiar";
+        $scope.url = window.location.href + novoLink.shortUrl;
+
         shortsRef.child(novoLink.shortUrl).set({id : novoLink.id, url : novoLink.url});
     };
+
+
+    var copiarLink = function() {
+    	var link = document.querySelector('.link');
+    	var range = document.createRange();
+
+    	range.selectNode(link);
+    	window.getSelection().addRange(range);
+
+    	try {
+    		var copiado = document.execCommand('copy');
+    		if (copiado)
+    			console.log('Copiado');
+    		else console.log('Não copiado');
+    	} catch(error) {
+    		console.log(error);
+    	}
+
+    	// Retirar seleção
+    	window.getSelection().removeAllRanges();
+    }
 
 
     // As funções a seguir foram adaptadas do seguinte site de 
