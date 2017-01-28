@@ -13,5 +13,11 @@
     "consign": "^0.1.2",
     "express": "^4.14.0",
     "firebase": "^3.6.7"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-less": "^1.4.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "jit-grunt": "^0.10.0"
   }
 }
