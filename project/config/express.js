@@ -1,12 +1,11 @@
+
 var express = require('express');
-var consign = require('consign');
 var app = express();
+
+var routes = require('../app/routes');
 
 app.use(express.static('./public'));
 
-consign({cwd: 'app'})
-	.include('api')
-	.then('routes')
-	.into(app);
+routes(app);
 
 module.exports = app;

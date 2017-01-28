@@ -18,12 +18,12 @@ var shortsRef = chaordicDatabase.ref('shorts');
 
 api.buscarLink = function(req, res) {
 
+	// URL compactada estática
 	shortsRef.child('1w5tg').once('value').then(function(snap) {
 		console.log(snap.val().url);
 		console.log("Redirecionar");
 	});
 
-	res.end(req.params.shortUrl);
 };
 
 module.exports = api;
