@@ -80,7 +80,7 @@ angular.module('chaordic').controller('LinksController', function($scope, $fireb
 
 
     var copiarLink = function() {
-    	var link = document.querySelector('.link');
+    	var link = document.querySelector('.url-input');
     	var range = document.createRange();
 
     	range.selectNode(link);

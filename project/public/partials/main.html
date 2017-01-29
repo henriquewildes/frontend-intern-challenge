@@ -1,16 +1,25 @@
 <header>
-	<h1><img src="assets/images/logo-chaordic.png"></h1>
+	<h1 class="logo center"><img src="assets/images/logo-chaordic.png" alt="Chaordic"></h1>
 </header>
 
-
 <main>
-	<h1>Encurte seus links.</h1>
-	<p>Links são longos. Encurte os links que você deseja compartilhar, e acompanhe enquanto viajam através da internet.</p>
-
-	<form ng-submit="acionarBotao()">
-		<input type="text" class="link" name="url" ng-model="url" placeholder="Cole sua URL aqui" required>	
-		<button type="submit">{{acao}}</button>
-	</form>
+	<div class="conteudo">
+		<div class="campos">
+			<h1 class="center">Encurte seus links.</h1>
+			<br>
+			<p class="center">Links são longos. Encurte os links que você deseja compartilhar, <br> e acompanhe enquanto viajam através da internet.</p>
+			<br>
+			<br>
+			<br>
+			<div class="center">
+				<form ng-submit="acionarBotao()">
+					<input class="url-input inline" type="text" class="link" name="url" ng-model="url" placeholder="Cole sua URL aqui" required>	
+					<button class="button inline" type="submit">{{acao}}</button>
+				</form>		
+			</div>
+			
+		</div>
+	</div>
 </main>
 
 <section ng-init="listarLinks()">
