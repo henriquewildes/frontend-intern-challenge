@@ -11,13 +11,14 @@ angular.module('chaordic').controller('LinksController', function($scope, $fireb
 
 	firebase.initializeApp(config);
 
+    $scope.acao = "Encurtar";
+    $scope.myUrl = "localhost:3000/"
+
 
 	// Variaveis de referência ao Database do Firebase
 	var chaordicDatabase = firebase.database();
 	var linksRef = chaordicDatabase.ref('links');
 	var shortsRef = chaordicDatabase.ref('shorts');
-
-	$scope.acao = "Encurtar";
 
 
 	// Função que lista os Links registrados no servidor Firebase.

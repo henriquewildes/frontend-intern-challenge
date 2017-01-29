@@ -8,8 +8,13 @@ h3 {
   font-family: "Roboto Slab", serif;
   margin: 0;
 }
-.campos h1 {
+h1 {
   font-size: 3em;
+}
+h2 {
+  color: #AA1423;
+  font-size: 2.0em;
+  text-transform: uppercase;
 }
 p {
   font-family: "Roboto", sans-serif;
@@ -22,6 +27,7 @@ header {
 }
 .logo {
   line-height: 60px;
+  font-size: 2em;
 }
 .center {
   text-align: center;
@@ -90,8 +96,33 @@ textarea:-moz-placeholder {
   color: orange;
   font-size: 1.34rem;
 }
+.conteudo-section {
+  margin: 0 auto;
+  width: 40%;
+  padding: 12px 0 65px 0;
+}
 .inline {
   display: inline-block;
+}
+/* SECTION TOP5*/
+.top5 {
+  background: white;
+  padding-top: 30px;
+}
+.item-top5 {
+  border: 0;
+  border-bottom: 2px solid;
+  border-color: #EEE;
+  padding: 15px 0 15px 0;
+}
+.top-link {
+  float: left;
+  color: #AA1423;
+  cursor: pointer;
+}
+.top-hits {
+  float: right;
+  color: #777;
 }
 section {
   background: blue;

@@ -8,9 +8,7 @@
 			<h1 class="center">Encurte seus links.</h1>
 			<br>
 			<p class="center">Links são longos. Encurte os links que você deseja compartilhar, <br> e acompanhe enquanto viajam através da internet.</p>
-			<br>
-			<br>
-			<br>
+			<br><br><br>
 			<div class="center">
 				<form ng-submit="acionarBotao()">
 					<input class="url-input inline" type="text" class="link" name="url" ng-model="url" placeholder="Cole sua URL aqui" required>	
@@ -22,12 +20,15 @@
 	</div>
 </main>
 
-<section ng-init="listarLinks()">
-	<h2>Top 5</h2>
-	<div ng-repeat="link in links | orderBy: '-hits' | limitTo: 5">
-		<p>{{link.shortUrl}}</p>
-		<p>{{link.hits}}</p>
-	</div>
+<section class="top5 center" ng-init="listarLinks()">
+	<div class="conteudo-section">
+		<h2 class="center">Top 5</h2>
+		<div class="item-top5" ng-repeat="link in links | orderBy: '-hits' | limitTo: 5">
+			<p class="inline top-link" href="{{myUrl}}{{link.shortUrl}}">{{myUrl}}{{link.shortUrl}}</p>
+			<p class="inline"></p>
+			<p class="inline top-hits">{{link.hits}}</p>
+		</div>
+	</div>	
 </section>
 
 <section>
