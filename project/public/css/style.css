@@ -20,6 +20,7 @@ p {
   font-family: "Roboto", sans-serif;
   margin: 0;
   font-size: 1.34rem;
+  color: #777;
   font-weight: 300;
 }
 header {
@@ -35,6 +36,9 @@ header {
 .campos {
   padding-top: 220px;
   padding-bottom: 64px;
+}
+main p {
+  color: white;
 }
 /*background-size: 100% auto*/
 /*height: 692px; PARA GRANDE*/
@@ -96,18 +100,15 @@ textarea:-moz-placeholder {
   color: orange;
   font-size: 1.34rem;
 }
-.conteudo-section {
-  margin: 0 auto;
-  width: 40%;
-  padding: 12px 0 65px 0;
-}
 .inline {
   display: inline-block;
 }
 /* SECTION TOP5*/
 .top5 {
   background: white;
-  padding-top: 30px;
+  margin: 0 auto;
+  width: 40%;
+  padding: 42px 0 65px 0;
 }
 .item-top5 {
   border: 0;
@@ -122,10 +123,24 @@ textarea:-moz-placeholder {
 }
 .top-hits {
   float: right;
-  color: #777;
 }
-section {
-  background: blue;
+/* SECTION HITS */
+.hits {
+  background: #EEE;
+  padding: 80px 0 65px 0;
+  margin: 0 auto;
+}
+.conteudo-hits {
+  margin: 0 auto;
+  width: 265px;
+}
+/*width: 245px;*/
+.caixa {
+  border: 2px solid;
+  border-color: #e1e1e1;
+  border-radius: 5px;
+  background: white;
+  color: #AA1423;
 }
 footer {
   background: orange;

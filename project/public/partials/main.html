@@ -21,20 +21,22 @@
 </main>
 
 <section class="top5 center" ng-init="listarLinks()">
-	<div class="conteudo-section">
-		<h2 class="center">Top 5</h2>
-		<div class="item-top5" ng-repeat="link in links | orderBy: '-hits' | limitTo: 5">
-			<p class="inline top-link" href="{{myUrl}}{{link.shortUrl}}">{{myUrl}}{{link.shortUrl}}</p>
-			<p class="inline"></p>
-			<p class="inline top-hits">{{link.hits}}</p>
-		</div>
-	</div>	
+	<h2 class="center">Top 5</h2><br>
+	<div class="item-top5" ng-repeat="link in links | orderBy: '-hits' | limitTo: 5">
+		<p class="inline top-link" href="{{myUrl}}{{link.shortUrl}}">{{myUrl}}{{link.shortUrl}}</p>
+		<p class="inline"></p>
+		<p class="inline top-hits">{{link.hits}}</p>
+	</div>
 </section>
 
-<section>
-	<h2>HITS</h2>	
-	<h3>35.713.571</h3>
-	<p>Clique em links</p>	
+<section class="hits center">	
+	<div class="conteudo-hits">
+		<h2>HITS</h2><br>
+		<div class="caixa">
+			<h2>35.713.571</h2>	
+		</div><br>
+		<p>Clique em links</p>		
+	</div>
 </section>
 
 <footer>

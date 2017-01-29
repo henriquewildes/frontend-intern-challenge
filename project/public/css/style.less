@@ -29,6 +29,7 @@ p {
 	font-family: "Roboto", sans-serif;
 	margin: 0;
 	font-size: @fonte-regular;
+	color: @cor-apoio;
 	font-weight: 300;
 }
 
@@ -48,6 +49,10 @@ header {
 .campos {
 	padding-top: 220px;
 	padding-bottom: 64px;
+}
+
+main p {
+	color: white;
 }
 
 /*background-size: 100% auto*/
@@ -117,24 +122,18 @@ textarea:-moz-placeholder {
 	font-size: @fonte-regular;
 }
 
-.conteudo-section {
-	margin: 0 auto;
-	width: 40%;
-	padding: 12px 0 65px 0;
-}
-
-
-
-
 
 .inline {
 	display: inline-block;
 }
 
+
 /* SECTION TOP5*/
 .top5 {
 	background: white;
-	padding-top: 30px;
+	margin: 0 auto;
+	width: 40%;
+	padding: 42px 0 65px 0;
 }
 
 .item-top5 {
@@ -152,22 +151,32 @@ textarea:-moz-placeholder {
 
 .top-hits {
 	float: right;
-	color: @cor-apoio;
 }
 
+ /* SECTION HITS */
 
-
-
-
-
-
-
-
-
-
-section {
-	background: blue;
+.hits {
+	background: @cor-cinza;
+	padding: 80px 0 65px 0;
+	margin: 0 auto;
 }
+
+.conteudo-hits {
+	margin: 0 auto;
+	width: 265px;
+}
+
+/*width: 245px;*/
+
+.caixa {
+	border: 2px solid;
+	border-color: darken(@cor-cinza, 5);
+	border-radius: 5px;
+	background: white;
+	color: @cor-chaordic;
+
+}
+
 
 footer {
 	background: orange;
