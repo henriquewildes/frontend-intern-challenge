@@ -23,6 +23,9 @@ p {
   color: #777;
   font-weight: 300;
 }
+ul {
+  margin: 0;
+}
 header {
   height: 50px;
 }
@@ -39,6 +42,9 @@ header {
 }
 main p {
   color: white;
+}
+footer p {
+  color: #AA1423;
 }
 /*background-size: 100% auto*/
 /*height: 692px; PARA GRANDE*/
@@ -143,5 +149,13 @@ textarea:-moz-placeholder {
   color: #AA1423;
 }
 footer {
-  background: orange;
+  padding: 15px 180px 15px 180px;
+  margin-top: 0 auto;
+}
+.icone-social {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.icones-sociais {
+  float: right;
 }
