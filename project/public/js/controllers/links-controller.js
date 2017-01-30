@@ -22,6 +22,16 @@ angular.module('chaordic').controller('LinksController', function($scope, $fireb
 	var linksRef = chaordicDatabase.ref('links');
 	var shortsRef = chaordicDatabase.ref('shorts');
 
+    var mostrarToast = function(mensagem) {
+
+        console.log("teste");
+        $(".toast").addClass('show');
+        $(".toast").text(mensagem);
+
+        setTimeout(function(){ 
+            $(".toast").removeClass('show');
+        }, 3000);
+    }
 
 	// Função que lista os Links registrados no servidor Firebase.
 	$scope.listarLinks = function() {
@@ -36,28 +46,11 @@ angular.module('chaordic').controller('LinksController', function($scope, $fireb
     $scope.acionarBotao = function() {
 
     	if ($scope.acao == "Encurtar") {
-            //animar();
             criarLink();
         }
     	else 
     		copiarLink();
     }
-
-    // var animar = function() {
-        
-    //     $(".url-input").addClass('esmaecer');
-    //     $(".button").addClass('esmaecer');
-
-    //     setTimeout(function() {
-    //         $(".url-input").val();
-    //         $(".url-input").addClass('shortUrl');
-    //         $(".clear").removeClass('hide');
-
-    //         $(".button").removeClass('no-clear');            
-    //         $(".button").removeClass('esmaecer');
-    //         $(".button").text("Copiar");
-    //     }, 500);
-    // }
 
     // Função que gera um novo Link e envia para o servidor Firebase.
     var criarLink = function() {
@@ -104,7 +97,7 @@ angular.module('chaordic').controller('LinksController', function($scope, $fireb
         // Nota: O Firebase adota um modelo não-relacional para o banco de dados,
         // logo, torna-se necessário criar uma relação entre dois grupos no Firebase.
 
-        // Registrando novo link no Grupo Links do Firebase
+        Registrando novo link no Grupo Links do Firebase
         linksRef.child(novoLink.id).set(novoLink)
         .then(function() {
         	console.log("Registrado com sucesso.");
@@ -129,8 +122,8 @@ angular.module('chaordic').controller('LinksController', function($scope, $fireb
     	try {
     		var copiado = document.execCommand('copy');
     		if (copiado)
-    			console.log('Copiado');
-    		else console.log('Não copiado');
+    			mostrarToast('Link copiado')
+    		else mostrarToast('Erro ao copiar');
     	} catch(error) {
     		console.log(error);
     	}
