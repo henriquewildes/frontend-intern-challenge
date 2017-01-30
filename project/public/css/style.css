@@ -9,19 +9,31 @@ h3 {
   margin: 0;
 }
 h1 {
-  font-size: 3em;
+  font-size: 2em;
+  font-weight: bold;
+}
+@media only screen and (min-width: 768px) {
+  h1 {
+    font-size: 3.6em;
+    font-weight: bold;
+  }
 }
 h2 {
   color: #AA1423;
-  font-size: 2.0em;
+  font-size: 2em;
   text-transform: uppercase;
 }
 p {
   font-family: "Roboto", sans-serif;
   margin: 0;
-  font-size: 1.34rem;
+  font-size: 1.1em;
   color: #777;
   font-weight: 300;
+}
+@media only screen and (min-width: 768px) {
+  p {
+    font-size: 1.36em;
+  }
 }
 ul {
   margin: 0;
@@ -35,13 +47,7 @@ main p {
 footer p {
   color: #AA1423;
 }
-/*.shortUrl {
-	color: white !important;
-	opacity: 0;
-	transition: color 1.5s, opacity 0.5s;
-}*/
 .hide {
-  /*color: transparent !important;*/
   display: none !important;
 }
 .no-clear {
@@ -59,47 +65,61 @@ footer p {
   color: orange !important;
 }
 .logo {
-  line-height: 60px;
+  line-height: 54px;
   font-size: 2em;
 }
 .center {
   text-align: center;
 }
-/*background-size: 100% auto*/
-/*height: 692px; PARA GRANDE*/
-/*height: 185px; PARA PEQUENO*/
 main {
   background: url('../assets/images/background-home.jpg');
   background-repeat: no-repeat;
-  background-position: top center;
-  background-size: 100%;
-  height: 692px;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: scroll;
   color: white;
 }
 .conteudo {
   margin: 0 auto;
-  width: 60%;
+  width: 80%;
 }
 .campos {
-  padding-top: 220px;
-  padding-bottom: 64px;
+  padding: 75px 0;
+}
+@media only screen and (min-width: 768px) {
+  .campos {
+    padding-top: 210px;
+    padding-bottom: 250px;
+    margin: 0 auto;
+    max-width: 640px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .formulario {
+    margin-top: 35px;
+  }
 }
 .button {
   width: 115px;
   height: 52px;
-  margin-left: 20px;
   font-family: "Roboto", sans-serif;
   font-size: medium;
   font-weight: 600;
   background-color: orange;
   color: white;
   border: none;
-  display: inline-block;
   line-height: 36px;
   padding: 0;
+  margin-top: 20px;
   text-transform: uppercase;
   vertical-align: middle;
   -webkit-tap-highlight-color: transparent;
+}
+@media only screen and (min-width: 451px) {
+  .button {
+    margin-left: 20px;
+    margin-top: 0;
+  }
 }
 .clear {
   height: 52px;
@@ -119,7 +139,6 @@ main {
 }
 .url-input {
   height: 36px;
-  width: 510px;
   background-color: transparent;
   border: 0;
   border-bottom: 2px solid;
@@ -127,22 +146,26 @@ main {
   border-radius: 0;
   color: orange;
   display: block;
-  font-size: 1.34rem;
+  font-size: 1.1em;
   line-height: 20px;
   padding: 8px 0 7px;
 }
-/* Placeholder do Input */
+@media only screen and (min-width: 768px) {
+  .url-input {
+    min-width: 500px;
+  }
+}
 ::-webkit-input-placeholder {
   color: orange;
-  font-size: 1.34rem;
+  font-size: 1.1em;
 }
 input:-moz-placeholder {
   color: orange;
-  font-size: 1.34rem;
+  font-size: 1.1em;
 }
 textarea:-moz-placeholder {
   color: orange;
-  font-size: 1.34rem;
+  font-size: 1.1em;
 }
 .inline {
   display: inline-block;
@@ -150,8 +173,13 @@ textarea:-moz-placeholder {
 /* SECTION TOP5*/
 .top5 {
   margin: 0 auto;
-  width: 40%;
+  width: 90%;
   padding: 42px 0 65px 0;
+}
+@media only screen and (min-width: 768px) {
+  .top5 {
+    width: 40%;
+  }
 }
 .item-top5 {
   border: 0;
@@ -186,7 +214,6 @@ textarea:-moz-placeholder {
   width: 180px;
   padding-top: 40px;
 }
-/*width: 245px;*/
 .caixa {
   border: 2px solid;
   border-color: #e1e1e1;
@@ -194,14 +221,22 @@ textarea:-moz-placeholder {
   background: white;
   color: #AA1423;
 }
+/* FOOTER */
 footer {
-  padding: 15px 180px 15px 180px;
-  margin-top: 0 auto;
+  padding: 15px;
 }
 .icone-social {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 0 10px;
 }
 .icones-sociais {
   float: right;
+  margin-top: -2px;
+}
+@media only screen and (min-width: 768px) {
+  footer {
+    padding: 15px 180px 15px 180px;
+  }
+  .icones-sociais {
+    margin-top: 0;
+  }
 }

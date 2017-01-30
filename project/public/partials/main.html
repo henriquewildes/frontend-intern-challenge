@@ -5,11 +5,10 @@
 <main>
 	<div class="conteudo">
 		<div class="campos">
-			<h1 class="center">Encurte seus links.</h1>
+			<h1 class="center">Encurte seus links.</h1><br>
+			<p class="center texto">Links são longos. Encurte os links que você deseja compartilhar, e acompanhe enquanto viajam através da internet.</p>
 			<br>
-			<p class="center">Links são longos. Encurte os links que você deseja compartilhar, <br> e acompanhe enquanto viajam através da internet.</p>
-			<br><br><br>
-			<div class="center">
+			<div class="center formulario">
 				<form ng-submit="acionarBotao()">
 					<input class="url-input inline" type="text" class="link" name="url" ng-model="url" placeholder="Cole sua URL aqui" required><button class="clear inline" type="reset" ng-click="limpar()">&times</button>		
 					<button class="button inline" type="submit">Encurtar</button>
@@ -43,7 +42,11 @@
 <footer>
 	<p class="inline ">{{myUrl}}</p>
 	<ul class="inline icones-sociais">
-		<li class="inline icone-social"><a href="https://twitter.com/chaordic"><img src="../assets/images/icon-twitter.png" alt="Twitter"></a></li>
-		<li class="inline icone-social"><a href="https://www.facebook.com/chaordic.com.br/"><img src="../assets/images/icon-facebook.png" alt="Facebook"></a></li>
+		<li class="inline icone-social">
+			<a href="https://twitter.com/chaordic"><img src="../assets/images/icon-twitter.png" alt="Twitter"></a>
+		</li>
+		<li class="inline icone-social">
+			<a href="https://www.facebook.com/chaordic.com.br/"><img src="../assets/images/icon-facebook.png" alt="Facebook"></a>
+		</li>
 	</ul>
 </footer>
