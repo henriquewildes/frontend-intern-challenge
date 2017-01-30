@@ -21,7 +21,7 @@
 <section class="top5 center" ng-init="listarLinks()">
 	<h2 class="center">Top 5</h2><br>
 	<ul class="links-top5">
-		<li ng-repeat="link in links | orderBy: '-hits' | limitTo: 10">
+		<li ng-repeat="link in links | orderBy: '-hits' | limitTo: 5">
 			<div class="item-top5">
 				<p class="inline top-link" ng-click="cliqueLink(link)">{{link.shortUrl}}</p>
 				<p class="inline"></p>

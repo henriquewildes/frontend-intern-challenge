@@ -113,7 +113,7 @@ angular.module('chaordic').controller('LinksController', function($scope, $fireb
         });
 
         // Gerando bijeção no Firebase
-        shortsRef.child(shortUrl).set({id : novoLink.id, url : novoLink.url});
+        shortsRef.child(shortUrl).set({id : novoLink.id, url : novoLink.url, hits : novoLink.hits});
     };
 
 
