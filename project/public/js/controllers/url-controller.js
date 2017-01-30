@@ -1,10 +1,35 @@
 angular.module('chaordic').controller('UrlController', function($scope, $http, $routeParams) {
 
+	// Initialize Firebase
+	var config = {
+		apiKey: "AIzaSyChx9E_oWnfgSPtYmQhXmrtFbMd4mqZJdU",
+		authDomain: "encurtadorchaordic.firebaseapp.com",
+		databaseURL: "https://encurtadorchaordic.firebaseio.com",
+		storageBucket: "encurtadorchaordic.appspot.com",
+		messagingSenderId: "549214079813"
+	};
+
+	firebase.initializeApp(config);
+
+	var chaordicDatabase = firebase.database();
+	var hitsRef = chaordicDatabase.ref('hits');
+	var linksRef = chaordicDatabase.ref('links');
+	var shortsRef = chaordicDatabase.ref('shorts');
+
 	$scope.notFound = false;
+
+	var hitsGlobal;
+
+	
 
 	$scope.carregarLink = function() {
 
 		console.log("Carregar a URL: " + $routeParams.shortUrl);
+
+		// hitsRef.once('value', function(snap) {
+	 //        hitsGlobal = snap.val();
+	 //        console.log(snap.val());
+	 //    });
 
 		if ($routeParams.shortUrl) {
 
@@ -12,7 +37,19 @@ angular.module('chaordic').controller('UrlController', function($scope, $http, $
 			.then(function(link) {
 
 				if (link.data) {
-					window.location.href = link.data.url;
+
+					link.data.hits++;
+					var hits = hitsGlobal;
+
+					hitsRef.once('value', function(snap) {
+				        hitsGlobal = snap.val();
+				        hitsRef.set(hitsGlobal + 1);
+				        shortsRef.child($routeParams.shortUrl).update({hits : link.data.hits});
+						linksRef.child(link.data.id).update({hits : link.data.hits})
+				        .then(function() {							        	
+				            window.location.href = link.data.url;
+				        });
+				    });			      
 				}
 				else {
 					$scope.notFound = true;

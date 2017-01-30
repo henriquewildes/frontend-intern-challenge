@@ -21,6 +21,11 @@ angular.module('chaordic').controller('LinksController', function($scope, $fireb
 	var chaordicDatabase = firebase.database();
 	var linksRef = chaordicDatabase.ref('links');
 	var shortsRef = chaordicDatabase.ref('shorts');
+    var hitsRef = chaordicDatabase.ref('hits');
+
+    hitsRef.on('value', function(snap) {
+        $scope.hits = snap.val();
+    });
 
     var mostrarToast = function(mensagem) {
 
@@ -97,7 +102,7 @@ angular.module('chaordic').controller('LinksController', function($scope, $fireb
         // Nota: O Firebase adota um modelo não-relacional para o banco de dados,
         // logo, torna-se necessário criar uma relação entre dois grupos no Firebase.
 
-        Registrando novo link no Grupo Links do Firebase
+        // Registrando novo link no Grupo Links do Firebase
         linksRef.child(novoLink.id).set(novoLink)
         .then(function() {
         	console.log("Registrado com sucesso.");
@@ -130,6 +135,19 @@ angular.module('chaordic').controller('LinksController', function($scope, $fireb
 
     	// Retirar seleção
     	window.getSelection().removeAllRanges();
+    }
+
+    $scope.cliqueLink = function(link) {
+        var shortUrl = link.shortUrl.slice($scope.myUrl.length + 1);
+        
+        link.hits++;
+        var hits = $scope.hits;
+        hitsRef.set(hits + 1);
+        linksRef.child(link.id).update({hits : link.hits});
+        shortsRef.child(shortUrl).update({hits : link.hits})
+        .then(function() {
+            window.location.href = link.url;
+        });
     }
 
     $scope.limpar = function() {
