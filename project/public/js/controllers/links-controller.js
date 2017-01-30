@@ -12,8 +12,10 @@ angular.module('chaordic').controller('LinksController', function($scope, $fireb
 	firebase.initializeApp(config);
 
     $scope.acao = "Encurtar";
-    $scope.myUrl = "localhost:3000/"
+    $scope.myUrl = "localhost:3000";
 
+    $(".clear").addClass("hide");
+    $(".button").addClass("no-clear");
 
 	// Variaveis de referência ao Database do Firebase
 	var chaordicDatabase = firebase.database();
@@ -26,23 +28,41 @@ angular.module('chaordic').controller('LinksController', function($scope, $fireb
         
         // Adiciona ouvinte no grupo Links do Firebase
         linksRef.on('value', function() {
-				$scope.links = $firebaseArray(linksRef);
-			});
+			$scope.links = $firebaseArray(linksRef);
+		});
     };
 
 
     $scope.acionarBotao = function() {
 
-    	if ($scope.acao == "Encurtar") 
-    		criarLink();
+    	if ($scope.acao == "Encurtar") {
+            //animar();
+            criarLink();
+        }
     	else 
     		copiarLink();
     }
 
+    // var animar = function() {
+        
+    //     $(".url-input").addClass('esmaecer');
+    //     $(".button").addClass('esmaecer');
+
+    //     setTimeout(function() {
+    //         $(".url-input").val();
+    //         $(".url-input").addClass('shortUrl');
+    //         $(".clear").removeClass('hide');
+
+    //         $(".button").removeClass('no-clear');            
+    //         $(".button").removeClass('esmaecer');
+    //         $(".button").text("Copiar");
+    //     }, 500);
+    // }
 
     // Função que gera um novo Link e envia para o servidor Firebase.
     var criarLink = function() {
 
+        $scope.acao = "Copiar";
     	var url = $scope.url;
 
     	// Checar se o link possui a inicial 'https://'
@@ -53,12 +73,33 @@ angular.module('chaordic').controller('LinksController', function($scope, $fireb
 
     	// O timestamp servirá como ID para cada novo Link.
     	var timestamp = new Date().getTime();
+
+        // Conversão do timestamp para Link compactado
+        var shortUrl = idToShortLink(timestamp);
+
         var novoLink = {
             id : timestamp.toString(),
             hits : 0,
             url : url,
-            shortUrl : idToShortLink(timestamp)
+            shortUrl : $scope.myUrl + '/' + shortUrl
         };
+
+        $(".url-input").addClass('esmaecer');
+        $(".button").addClass('esmaecer');
+
+        setTimeout(function() {        
+            $(".url-input").removeClass('esmaecer');
+            $(".url-input").removeClass('normalUrl');
+            $(".url-input").val(novoLink.shortUrl);
+            $(".url-input").addClass('shortUrl');
+
+            $(".clear").removeClass('hide');
+
+            $(".button").removeClass('no-clear');            
+            $(".button").removeClass('esmaecer');
+            $(".button").text("Copiar");
+        }, 500);
+
     	
         // Nota: O Firebase adota um modelo não-relacional para o banco de dados,
         // logo, torna-se necessário criar uma relação entre dois grupos no Firebase.
@@ -73,10 +114,8 @@ angular.module('chaordic').controller('LinksController', function($scope, $fireb
         	console.log(error);
         });
 
-        $scope.acao = "Copiar";
-        $scope.url = window.location.href + novoLink.shortUrl;
-
-        shortsRef.child(novoLink.shortUrl).set({id : novoLink.id, url : novoLink.url});
+        // Gerando bijeção no Firebase
+        shortsRef.child(shortUrl).set({id : novoLink.id, url : novoLink.url});
     };
 
 
@@ -98,6 +137,15 @@ angular.module('chaordic').controller('LinksController', function($scope, $fireb
 
     	// Retirar seleção
     	window.getSelection().removeAllRanges();
+    }
+
+    $scope.limpar = function() {
+        $(".clear").addClass("hide");
+        $(".button").addClass("no-clear");
+        $(".button").text("Encurtar");
+        $(".url-input").removeClass("shortUrl");
+        $(".url-input").addClass("normalUrl");
+        $scope.acao = "Encurtar";
     }
 
 

@@ -11,8 +11,8 @@
 			<br><br><br>
 			<div class="center">
 				<form ng-submit="acionarBotao()">
-					<input class="url-input inline" type="text" class="link" name="url" ng-model="url" placeholder="Cole sua URL aqui" required>	
-					<button class="button inline" type="submit">{{acao}}</button>
+					<input class="url-input inline" type="text" class="link" name="url" ng-model="url" placeholder="Cole sua URL aqui" required><button class="clear inline" type="reset" ng-click="limpar()">&times</button>		
+					<button class="button inline" type="submit">Encurtar</button>
 				</form>		
 			</div>
 			
@@ -23,13 +23,14 @@
 <section class="top5 center" ng-init="listarLinks()">
 	<h2 class="center">Top 5</h2><br>
 	<div class="item-top5" ng-repeat="link in links | orderBy: '-hits' | limitTo: 5">
-		<p class="inline top-link" href="{{myUrl}}{{link.shortUrl}}">{{myUrl}}{{link.shortUrl}}</p>
+		<p class="inline top-link" href="{{link.shortUrl}}">{{link.shortUrl}}</p>
 		<p class="inline"></p>
 		<p class="inline top-hits">{{link.hits}}</p>
 	</div>
 </section>
 
 <section class="hits center">	
+	<div class="triangulo"></div>
 	<div class="conteudo-hits">
 		<h2>HITS</h2><br>
 		<div class="caixa">
@@ -42,19 +43,7 @@
 <footer>
 	<p class="inline ">{{myUrl}}</p>
 	<ul class="inline icones-sociais">
-		<li class="inline icone-social"><a href=""><img src="../assets/images/icon-twitter.png" alt="Twitter"></a></li>
-		<li class="inline icone-social"><a href=""><img src="../assets/images/icon-facebook.png" alt="Facebook"></a></li>
+		<li class="inline icone-social"><a href="https://twitter.com/chaordic"><img src="../assets/images/icon-twitter.png" alt="Twitter"></a></li>
+		<li class="inline icone-social"><a href="https://www.facebook.com/chaordic.com.br/"><img src="../assets/images/icon-facebook.png" alt="Facebook"></a></li>
 	</ul>
-
-
-	<!-- <p class="inline myUrl">{{myUrl}}</p>
-	<p class="inline"> </p> -->
-	<!-- <ul class="inline icones-sociais">
-		<li class="inline">
-			<a href="https://twitter.com/chaordic"><img class="icone-social" src="../assets/images/icon-twitter.png" alt="Twitter"></a>
-		</li>
-		<li class="inline">
-			<a href="https://www.facebook.com/chaordic.com.br/"><img class="icone-social" src="../assets/images/icon-facebook.png" alt="Facebook"></a>
-		</li>
-	</ul> -->
 </footer>

@@ -42,6 +42,44 @@ header {
 	height: 50px;
 }
 
+main p {
+	color: white;
+}
+
+footer p {
+	color: @cor-chaordic;
+}
+
+/*.shortUrl {
+	color: white !important;
+	opacity: 0;
+	transition: color 1.5s, opacity 0.5s;
+}*/
+
+.hide {
+	/*color: transparent !important;*/
+	display: none !important;
+}
+
+.no-clear {
+	margin-left: 10px !important;
+} 
+
+.esmaecer {
+	color: transparent !important;
+	transition: color 0.5s;
+}
+
+
+.shortUrl {
+	color: white !important;
+	transition: color 0.5s;
+}
+
+.normalUrl {
+	color: @cor-laranja !important;
+}
+
 .logo {
 	line-height: 60px;
 	font-size: 2em;
@@ -49,19 +87,6 @@ header {
 
 .center {
 	text-align: center;
-}
-
-.campos {
-	padding-top: 220px;
-	padding-bottom: 64px;
-}
-
-main p {
-	color: white;
-}
-
-footer p {
-	color: @cor-chaordic;
 }
 
 /*background-size: 100% auto*/
@@ -82,9 +107,15 @@ main {
 	width: 60%;
 }
 
+.campos {
+	padding-top: 220px;
+	padding-bottom: 64px;
+}
+
 .button {
 	width: 115px;
-	height: 45px;
+	height: 52px;
+	margin-left: 20px;
 	font-family: "Roboto", sans-serif;
 	font-size: medium;
 	font-weight: 600;
@@ -97,8 +128,23 @@ main {
 	text-transform: uppercase;
 	vertical-align: middle;
 	-webkit-tap-highlight-color: transparent;
-	margin-top: 6px;
-	margin-left: 3px;
+}
+
+.clear {
+	height: 52px;
+	margin-left: -20px;
+	font-family: "Roboto", sans-serif;
+	font-size: medium;
+	font-weight: 600;
+	background-color: transparent;
+	color: white;
+	border: none;
+	display: inline-block;
+	line-height: 36px;
+	padding: 0;
+	text-transform: uppercase;
+	vertical-align: middle;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .url-input {
@@ -111,8 +157,7 @@ main {
 	border-radius: 0;
 	color: @cor-laranja;
 	display: block;
-	font-size: 14px;
-	
+	font-size: @fonte-regular;
 	line-height: 20px;
 	padding: 8px 0 7px;
 }
@@ -139,7 +184,6 @@ textarea:-moz-placeholder {
 
 /* SECTION TOP5*/
 .top5 {
-	background: white;
 	margin: 0 auto;
 	width: 40%;
 	padding: 42px 0 65px 0;
@@ -162,17 +206,27 @@ textarea:-moz-placeholder {
 	float: right;
 }
 
+.triangulo {
+	margin: 0 auto;
+	width: 0;
+	height: 0;
+	border-top: 3em solid white;
+	border-right: 3em solid transparent;
+	border-left: 3em solid transparent;
+}
+
  /* SECTION HITS */
 
 .hits {
 	background: @cor-cinza;
-	padding: 80px 0 65px 0;
+	padding: 0px 0 65px 0;
 	margin: 0 auto;
 }
 
 .conteudo-hits {
 	margin: 0 auto;
-	width: 265px;
+	width: 180px;
+	padding-top: 40px;
 }
 
 /*width: 245px;*/
@@ -199,3 +253,5 @@ footer {
 .icones-sociais {
 	float: right;
 }
+
+
