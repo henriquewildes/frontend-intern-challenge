@@ -44,8 +44,8 @@ angular.module('chaordic').controller('UrlController', function($scope, $http, $
 					hitsRef.once('value', function(snap) {
 				        hitsGlobal = snap.val();
 				        hitsRef.set(hitsGlobal + 1);
-				        shortsRef.child($routeParams.shortUrl).update({hits : link.data.hits});
-						linksRef.child(link.data.id).update({hits : link.data.hits})
+				        linksRef.child(link.data.id).update({hits : link.data.hits});
+				        shortsRef.child($routeParams.shortUrl).update({hits : link.data.hits})
 				        .then(function() {							        	
 				            window.location.href = link.data.url;
 				        });
