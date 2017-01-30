@@ -20,7 +20,7 @@ angular.module('chaordic').controller('UrlController', function($scope, $http, $
 
 	var hitsGlobal;
 
-	$scope.carregarLink = function() {Z
+	$scope.carregarLink = function() {
 
 		if ($routeParams.shortUrl) {
 

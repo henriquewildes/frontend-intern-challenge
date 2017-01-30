@@ -64,10 +64,13 @@ angular.module('chaordic').controller('LinksController', function($scope, $fireb
     	var url = $scope.url;
 
     	// Checar se o link possui a inicial 'https://'
-    	var https = 'https://';
-    	var inicioUrl = url.slice(0,8);
-    	if (inicioUrl != https)
-    		url = https + url;
+        var https = 'https://';
+        var http = 'http://';
+        var inicioUrl1 = url.slice(0,8);
+        var inicioUrl2 = url.slice(0,7);
+        
+        if (inicioUrl1 != https && inicioUrl2 != http)
+            url = https + url;
 
     	// O timestamp servirá como ID para cada novo Link.
     	var timestamp = new Date().getTime();
